@@ -1,7 +1,6 @@
-const filePath = './user.json'; // Make sure this path is correct
+const filePath = 'controller/user.json'; // Make sure this path is correct
 
 const fs = require('fs');
-const fs = require('path');
 const jwt = require('jsonwebtoken');
 
 async function signUp(req, res) {
@@ -17,9 +16,12 @@ async function signUp(req, res) {
 
         try {
             let existingData = JSON.parse(data);
+            
 
             // Append your new JSON data
             existingData.push(newData);
+            
+            // existingData.append(newData);
 
             // Write the updated object back to the JSON file
             fs.writeFile(filePath, JSON.stringify(existingData, null, 2), 'utf8', (err) => {
